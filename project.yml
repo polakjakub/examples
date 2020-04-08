@@ -1,0 +1,41 @@
+all:
+    document:
+        charset: "UTF-8"
+        title: "UMDB: The Ulimate Movie Database"
+        css: [ layout.css ]
+        js: [ ]
+        xsl: xsl/document.xsl
+        cleanup: true
+    path:
+        base: "/"
+        css: "css"
+        js: "js"
+    modules:
+      fixtures:
+        class: Fixtures
+        args:
+          name:   fixtures
+          mode:   Fixtures::MODE_COMMON
+404:
+    document:
+        xsl:    xsl/404.xsl
+
+
+index:
+    document:
+        xsl:    xsl/index.xsl
+    modules:
+      top_rated_movies:
+        class: Movie
+        args:
+          name: top_rated_movies
+          mode: Movie::MODE_TOP_RATED
+movie:
+    document:
+        xsl: xsl/index.xsl
+    modules:
+      movie:
+        class: Movie
+        args:
+          name: movie
+          mode: Movie::MODE_DETAIL
